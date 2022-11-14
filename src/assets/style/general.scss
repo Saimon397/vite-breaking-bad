@@ -7,10 +7,20 @@ $fa-font-path: '../webfonts';
 @import 'bootstrap/scss/bootstrap';
 
 body {
-    background-image: url(../../../public/img/wallpaperflare.com_wallpaper.jpg);
+    background-image: url(./img/wallpaperflare.com_wallpaper.jpg);
     background-size: cover;
 
     nav {
-        background-color: $bg;
+        background-color: $bg2;
+    }
+}
+
+.cards-container {
+    background-color: $bg2;
+
+    img {
+        border-radius: 50%;
+        height: 60%;
+        width: 100%;
     }
 }
