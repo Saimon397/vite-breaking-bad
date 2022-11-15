@@ -1,5 +1,5 @@
 <template>
-    <form class="form-floating bg-dark col-2 pt-0 w-100 d-flex justify-content-end" @submit.prevent='searchcharater'>
+    <form class="form-floating bg-dark col-2 pt-0 w-100 d-flex justify-content-end" @submit.prevent='searchcharacter'>
         <select class="form-select pt-0 pb-0 fs-4 bg-dark text-white text-center w-75" id="inlineFormSelectPref"
             v-model="search">
             <option selected value="">Select Category:</option>
@@ -23,7 +23,7 @@ export default {
         }
     },
     methods: {
-        searchcharater() {
+        searchcharacter() {
             this.$emit('filterchar', this.search)
             console.log(this.search)
         },
