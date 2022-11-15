@@ -1,9 +1,9 @@
 <template>
     <CategoryComponent @filterchar="getCharacters" />
     <div class="cards-container">
-        <div v-html="`found ${characterList.length} characters...`"
+        <div v-html="`found ${store.characterList.length} characters...`"
             class="text-center border bg-dark p-3 text-uppercase text-white"></div>
-        <CardsComponent :character="characterList" :loading="loading" />
+        <CardsComponent :character="store.characterList" :loading="store.loading" />
     </div>
 </template>
 
@@ -11,6 +11,7 @@
 import axios from 'axios'
 import CardsComponent from './CardsComponent.vue';
 import CategoryComponent from './CategoryComponent.vue';
+import { store } from '../store';
 
 export default {
     components: {
@@ -18,9 +19,7 @@ export default {
         CategoryComponent,
     }, data() {
         return {
-            apiURL: 'https://www.breakingbadapi.com/api/characters',
-            characterList: [],
-            loading: false
+            store
         }
     },
     methods: {
@@ -33,11 +32,11 @@ export default {
                     }
                 }
             }
-            axios.get(this.apiURL, options).then(
+            axios.get(store.apiURL, options).then(
                 (res) => {
-                    this.characterList = [...res.data]
-                    console.log(this.characterList)
-                    this.loading = false;
+                    store.characterList = [...res.data]
+                    console.log(store.characterList)
+                    store.loading = false;
                 },
             )
                 .catch((error) => {
